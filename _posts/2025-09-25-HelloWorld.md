@@ -2,7 +2,7 @@
 title: 你好，世界
 date: 2025-09-25 12:00 +0800
 categories: [Blogs]
-tags: [CPP]
+tags: [cpp]
 ---
 # Hello, World!
 
