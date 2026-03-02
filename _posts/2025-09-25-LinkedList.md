@@ -4,8 +4,8 @@ date: 2025-09-25 21:00 +0800
 categories: [Blogs, Learn]
 tags: [cpp, linklist]
 image:
-  path: /assets/img/blog/LinkedList.png
-  alt: 链表
+  path: /assets/img/blog/@55URI-the-beaten-path.png
+  alt: the-beaten-path
 ---
 
 # 数据结构的基石 —— 链表
