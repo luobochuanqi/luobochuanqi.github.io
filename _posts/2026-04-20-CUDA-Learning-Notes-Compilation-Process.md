@@ -27,6 +27,79 @@ nvcc hello_dlink.o -o hello           # 主机链接
 
 *从 CUDA 源代码到可执行文件的完整编译流程*
 
+## 虚拟架构 vs 真实架构
+
+在 CUDA 编译中，会接触到两种架构概念：
+
+### 虚拟架构（PTX）
+
+- **是什么**：PTX 是一种虚拟的、与硬件无关的中间指令集，可以理解为"GPU 的汇编语言伪代码"。
+- **干什么用**：作为编译的中间产物，屏蔽不同 GPU 硬件的差异。一份 PTX 代码可以通过 JIT 编译运行在任何支持该 PTX 版本的 GPU 上。
+- **命名格式**：`ptxaa`，如 `ptx70` 表示 PTX ISA 7.0 版本。
+
+### 真实架构（SASS）
+
+- **是什么**：SASS 是 NVIDIA GPU 的真实机器指令集，直接对应具体 GPU 硬件架构（如 Ampere、Hopper）。
+- **干什么用**：GPU 真正执行的指令。每种 GPU 架构有自己的 SASS 指令集，不同架构之间不兼容。
+- **命名格式**：`sm_xx`，如 `sm_80` 表示 Ampere 架构，`sm_90` 表示 Hopper 架构。
+
+### 两者关系
+
+```
+源代码 (.cu)
+    ↓
+  编译
+    ↓
+虚拟架构 (PTX)  ←─ 一次编译，多处运行
+    ↓
+  JIT 编译（运行时）
+    ↓
+真实架构 (SASS)  ←─ 针对具体 GPU 硬件优化
+```
+
+## 计算能力与 GPU 架构
+
+### 什么是计算能力（Compute Capability）
+
+计算能力是 NVIDIA GPU 的架构版本号，格式为 `major.minor`，例如：
+
+| GPU 架构 | 计算能力 | 代表产品 |
+|----------|----------|----------|
+| Kepler   | 3.0-3.7  | GTX 700 系列 |
+| Pascal   | 6.0-6.2  | GTX 1000 系列，Tesla P100 |
+| Volta    | 7.0      | Tesla V100 |
+| Turing   | 7.5      | RTX 2000 系列 |
+| Ampere   | 8.0-8.9  | RTX 3000 系列，A100 |
+| Hopper   | 9.0      | H100 |
+
+### 计算能力的作用
+
+1. **决定硬件特性**：不同计算能力支持不同的特性（如 Tensor Core、Ray Tracing Core）
+2. **影响编译选项**：编译时需指定 `-arch=sm_xx` 来匹配目标 GPU
+3. **限制资源使用**：每个计算能力对寄存器数量、共享内存大小等有限制
+
+### 编译时如何选择
+
+```bash
+# 只针对特定架构优化（性能最好，但兼容性差）
+nvcc -arch=sm_80 -code=sm_80 hello.cu -o hello
+
+# 生成 PTX 保证向前兼容（兼容性好，但首次运行慢）
+nvcc -arch=sm_80 -code=compute_80 hello.cu -o hello
+
+# 混合方式：同时生成 SASS 和 PTX（推荐）
+nvcc -arch=sm_80 -code=sm_80,compute_80 hello.cu -o hello
+```
+
+### 查看自己 GPU 的计算能力
+
+```bash
+# 使用 deviceQuery 工具
+/usr/local/cuda/samples/1_Utilities/deviceQuery/deviceQuery
+
+# 或在线查询：https://developer.nvidia.com/cuda-gpus
+```
+
 ## PTX 的设计目的
 
 **PTX（Parallel Thread Execution）** 是一种虚拟的 GPU 指令集架构，它的设计目的可以用一个通俗的比喻来理解：
