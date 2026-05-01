@@ -32,16 +32,15 @@ nvcc hello_dlink.o -o hello           # 主机链接
 在 CUDA 编译中，会接触到两种架构概念：
 
 ### 虚拟架构（PTX）
-
 - **是什么**：PTX 是一种虚拟的、与硬件无关的中间指令集，可以理解为"GPU 的汇编语言伪代码"。
 - **干什么用**：作为编译的中间产物，屏蔽不同 GPU 硬件的差异。一份 PTX 代码可以通过 JIT 编译运行在任何支持该 PTX 版本的 GPU 上。
-- **命名格式**：`ptxaa`，如 `ptx70` 表示 PTX ISA 7.0 版本。
+- **nvcc 选项关键字**：`compute_xx`，如 `compute_80` 表示编译为计算能力 8.0 对应的 PTX 代码。
+- **PTX 版本命名**：`ptxaa`，如 `ptx70` 表示 PTX ISA 7.0 版本，不同计算能力对应不同 PTX 版本。
 
 ### 真实架构（SASS）
-
 - **是什么**：SASS 是 NVIDIA GPU 的真实机器指令集，直接对应具体 GPU 硬件架构（如 Ampere、Hopper）。
 - **干什么用**：GPU 真正执行的指令。每种 GPU 架构有自己的 SASS 指令集，不同架构之间不兼容。
-- **命名格式**：`sm_xx`，如 `sm_80` 表示 Ampere 架构，`sm_90` 表示 Hopper 架构。
+- **nvcc 选项关键字**：`sm_xx`，如 `sm_80` 表示 Ampere 架构，`sm_90` 表示 Hopper 架构。
 
 ### 两者关系
 
@@ -75,20 +74,20 @@ nvcc hello_dlink.o -o hello           # 主机链接
 ### 计算能力的作用
 
 1. **决定硬件特性**：不同计算能力支持不同的特性（如 Tensor Core、Ray Tracing Core）
-2. **影响编译选项**：编译时需指定 `-arch=sm_xx` 来匹配目标 GPU
+2. **影响编译选项**：编译时需指定 `-arch=compute_xx` 和 `-code=sm_xx` 来匹配目标 GPU
 3. **限制资源使用**：每个计算能力对寄存器数量、共享内存大小等有限制
 
 ### 编译时如何选择
 
 ```bash
 # 只针对特定架构优化（性能最好，但兼容性差）
-nvcc -arch=sm_80 -code=sm_80 hello.cu -o hello
+nvcc -arch=compute_80 -code=sm_80 hello.cu -o hello
 
 # 生成 PTX 保证向前兼容（兼容性好，但首次运行慢）
-nvcc -arch=sm_80 -code=compute_80 hello.cu -o hello
+nvcc -arch=compute_80 -code=compute_80 hello.cu -o hello
 
 # 混合方式：同时生成 SASS 和 PTX（推荐）
-nvcc -arch=sm_80 -code=sm_80,compute_80 hello.cu -o hello
+nvcc -arch=compute_80 -code=sm_80,compute_80 hello.cu -o hello
 ```
 
 ### 查看自己 GPU 的计算能力
@@ -112,7 +111,7 @@ nvcc -arch=sm_80 -code=sm_80,compute_80 hello.cu -o hello
 
 2. **向后兼容**：即使未来的 GPU 架构发生变化，只要支持 PTX，旧的 CUDA 程序仍然可以运行。
 
-3. **抽象硬件细节**：开发者无需为每种 GPU 架构单独编译，只需指定目标计算能力（如 `-arch=sm_80`），nvcc 会自动生成对应的 PTX 和 SASS。
+3. **抽象硬件细节**：开发者无需为每种 GPU 架构单独编译，只需指定目标计算能力（如 `-arch=compute_80`），nvcc 会自动生成对应的 PTX 和 SASS。
 
 ### JIT 编译
 
@@ -124,8 +123,9 @@ nvcc -arch=sm_80 -code=sm_80,compute_80 hello.cu -o hello
 
 | 选项 | 说明 |
 |------|------|
-| `-arch=sm_xx` | 指定目标 GPU 架构（如 sm_80 表示 Ampere） |
-| `-code=sm_xx` | 生成特定架构的可执行代码 |
+| `-arch=compute_xx` | 指定 PTX 虚拟架构版本（如 compute_80 表示计算能力 8.0 的 PTX） |
+| `-code=sm_xx` | 生成特定真实架构的 SASS 可执行代码 |
+| `-code=compute_xx` | 在胖二进制中嵌入 PTX 代码，保证兼容性 |
 | `-ptx` | 只编译到 PTX 中间代码 |
 | `-cubin` | 生成 CUDA 二进制文件（.cubin） |
 | `-fatbin` | 生成包含多种架构的胖二进制文件 |
@@ -133,8 +133,8 @@ nvcc -arch=sm_80 -code=sm_80,compute_80 hello.cu -o hello
 ### 示例：生成多架构胖二进制
 
 ```bash
-# 为多种 GPU 架构生成代码
-nvcc -arch=sm_80 -code=sm_80,sm_86,sm_90 hello.cu -o hello
+# 为多种 GPU 架构生成 SASS，并嵌入 PTX 保证兼容性
+nvcc -arch=compute_80 -code=sm_80,sm_86,sm_90,compute_80 hello.cu -o hello
 ```
 
 这样生成的可执行文件可以在不同代际的 GPU 上运行。
