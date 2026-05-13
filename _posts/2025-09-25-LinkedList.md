@@ -2,7 +2,7 @@
 title: 链表
 date: 2025-09-25 21:00 +0800
 categories: [Blogs, Learn]
-tags: [cpp, linklist]
+tags: [cpp, linked-list]
 ---
 
 # 数据结构的基石 —— 链表
