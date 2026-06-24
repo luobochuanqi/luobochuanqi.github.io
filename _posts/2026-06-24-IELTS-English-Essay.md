@@ -7,7 +7,7 @@ tags: [english]
 
 ## 图表作文
 
-![table](assets\img\blog\essay-table.png)
+![table](assets/img/blog/essay-table.png)
 
 - 开头:
   1. The table presents statistics on...
