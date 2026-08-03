@@ -1,0 +1,54 @@
+<script>
+  (function () {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* staggered reveal */
+    var reveals = document.querySelectorAll('.ds-reveal');
+    if (reduced || !('IntersectionObserver' in window)) {
+      reveals.forEach(function (el) {
+        el.classList.add('is-in');
+      });
+    } else {
+      var io = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-in');
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+      reveals.forEach(function (el, i) {
+        el.style.transitionDelay = (i % 2) * 0.1 + 's';
+        io.observe(el);
+      });
+    }
+
+    /* scramble-decode the handle */
+    var el = document.querySelector('[data-scramble]');
+    if (el && !reduced) {
+      var final = el.textContent.trim();
+      var glyphs = '█▓▒░<>/\\|=+*#01';
+      var frame = 0;
+      var total = final.length * 6 + 12;
+      el.textContent = '';
+      var timer = setInterval(function () {
+        frame++;
+        var out = '';
+        for (var i = 0; i < final.length; i++) {
+          var solved = frame > i * 6 + 8;
+          out += solved
+            ? final[i]
+            : glyphs[Math.floor(Math.random() * glyphs.length)];
+        }
+        el.textContent = out;
+        if (frame >= total) {
+          el.textContent = final;
+          clearInterval(timer);
+        }
+      }, 40);
+    }
+  })();
+</script>

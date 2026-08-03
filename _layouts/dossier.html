@@ -1,0 +1,123 @@
+---
+layout: default
+script_includes:
+  - dossier-script
+---
+
+{% assign d = site.data.dossier %}
+
+<div class="dossier">
+  <!-- 01 IDENTITY -->
+  <section class="ds-identity ds-reveal">
+    <div class="ds-id-left">
+      <p class="ds-eyebrow">CASE FILE // {{ site.url | remove_first: 'https://' }}</p>
+      <h1 class="ds-handle" data-scramble>{{ d.identity.handle }}</h1>
+      <p class="ds-tagline">{{ d.identity.tagline }}</p>
+      <ul class="ds-status">
+        <li>STATUS <b>{{ d.identity.status }}</b></li>
+        <li>SINCE <b>{{ d.identity.since }}</b></li>
+        <li>POSTS <b>{{ site.posts | size }}</b></li>
+      </ul>
+    </div>
+    <figure class="ds-specimen">
+      <span class="ds-corner c-tl"></span>
+      <span class="ds-corner c-tr"></span>
+      <span class="ds-corner c-bl"></span>
+      <span class="ds-corner c-br"></span>
+      <img src="{{ '/assets/img/avatar.jpg' | relative_url }}" alt="{{ d.identity.specimen.alt }}">
+      <figcaption>
+        SPECIMEN 001 // <i>{{ d.identity.specimen.genus }}</i><br>
+        {{ d.identity.specimen.note }}
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- 02 SPEC SHEET -->
+  <section class="ds-spec ds-reveal">
+    <h2 class="ds-sec-title">SPEC SHEET</h2>
+    <dl class="ds-fields">
+      {% for f in d.identity.redacted_fields %}
+        <div class="ds-field">
+          <dt>{{ f.label }}</dt>
+          <dd class="ds-redacted" aria-label="redacted">████████</dd>
+        </div>
+      {% endfor %}
+      {% for s in d.spec %}
+        <div class="ds-field">
+          <dt>{{ s.key }}</dt>
+          <dd>{{ s.value }}</dd>
+        </div>
+      {% endfor %}
+    </dl>
+    <div class="ds-skills">
+      {% for g in d.skills %}
+        <div class="ds-skill-group">
+          <h3>{{ g.group }}</h3>
+          <ul>
+            {% for item in g.items %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- 03 SELECTED WORKS -->
+  <section class="ds-works ds-reveal">
+    <h2 class="ds-sec-title">SELECTED WORKS</h2>
+    <div class="ds-bento">
+      {% for w in d.works %}
+        <a
+          href="{{ w.url }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="ds-work{% if w.span == 'wide' %} ds-wide{% endif %}"
+        >
+          <div class="ds-work-head">
+            <span class="ds-work-name">{{ w.name }}</span>
+            <span class="ds-work-stars">★ {{ w.stars }}</span>
+          </div>
+          <p class="ds-work-desc">{{ w.desc }}</p>
+          <span class="ds-work-lang">{{ w.lang }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- 04 OUTPUT LOG -->
+  <section class="ds-log ds-reveal">
+    <h2 class="ds-sec-title">OUTPUT LOG</h2>
+    <div class="ds-terminal">
+      <p class="ds-term-line cmd">$ luobo --list-output --by-domain</p>
+      {% for l in d.log %}
+        <div class="ds-log-row">
+          <span class="ds-log-domain">{{ l.domain }}</span>
+          <span class="ds-log-bar" style="--n: {{ l.count }}"></span>
+          <span class="ds-log-count">{{ l.count }}</span>
+        </div>
+      {% endfor %}
+      <p class="ds-term-line dim"># 31 entries since 2025.09, still appending</p>
+    </div>
+  </section>
+
+  <!-- 05 OUTPUT PORTS -->
+  <section class="ds-ports ds-reveal">
+    <h2 class="ds-sec-title">OUTPUT PORTS</h2>
+    <div class="ds-port-grid">
+      {% for p in d.ports %}
+        <a
+          href="{{ p.url | relative_url }}"
+          {% unless p.url contains 'mailto' or p.url contains 'feed' %}
+            target="_blank" rel="noopener noreferrer"
+          {% endunless %}
+          class="ds-port"
+        >
+          <i class="{{ p.icon }}"></i>
+          <span class="ds-port-label">{{ p.label }}</span>
+          <span class="ds-port-note">{{ p.note }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+</div>

@@ -1,0 +1,93 @@
+# DOSSIER panel data. Snapshot of public GitHub data, frozen at build time.
+# No runtime network requests; refresh by editing this file.
+
+identity:
+  handle: LUOBO
+  tagline: 写代码的。偶尔写点别的。
+  redacted_fields:
+    - label: REALNAME
+    - label: LOCATION
+    - label: AFFILIATION
+  status: ACTIVE
+  since: 2025.09
+  specimen:
+    alt: 一只比着剪刀手的牡丹鹦鹉
+    genus: Agapornis roseicollis
+    note: 本站唯一真实生物
+
+spec:
+  - key: FOCUS
+    value: 系统 / 数据结构 / 游戏
+  - key: STACK
+    value: C++ · Rust · Java · Vue · Python
+  - key: EDITOR
+    value: ██████
+  - key: OS
+    value: ███████
+
+skills:
+  - group: 语言
+    items: [C++, Rust, Java, Python, TypeScript, Kotlin, Shell]
+  - group: 方向
+    items: [数据结构, 计算机系统, CUDA, 神经网络, 游戏开发, Mod 开发]
+  - group: 工具
+    items: [Vue 3, Qt, Gradle, Git, Linux]
+
+works:
+  - name: interactive-bitwise-guide
+    lang: Vue
+    stars: 0
+    desc: 交互式位运算可视化器。实时二进制矩阵展示，AI 逐步解析。
+    url: https://github.com/luobochuanqi/interactive-bitwise-guide
+    span: wide
+  - name: MMindustry
+    lang: Java
+    stars: 4
+    desc: 一个 Minecraft mod，在 MC 里还原 Mindustry。
+    url: https://github.com/luobochuanqi/MMindustry
+  - name: FishImmortality
+    lang: C++
+    stars: 3
+    desc: 摸鱼修仙小游戏。Qt 实现，有丹药与灵石系统。
+    url: https://github.com/luobochuanqi/FishImmortality
+  - name: TodoList-CLI
+    lang: Rust
+    stars: 0
+    desc: 终端里的待办清单。Rust 练手，但真的在用。
+    url: https://github.com/luobochuanqi/TodoList-CLI
+  - name: ai-chat-platform
+    lang: Python
+    stars: 0
+    desc: 自建 AI 对话平台。
+    url: https://github.com/luobochuanqi/ai-chat-platform
+  - name: mnist-demo
+    lang: Python
+    stars: 0
+    desc: 面向初学者的手写数字识别神经网络 Demo。
+    url: https://github.com/luobochuanqi/mnist-demo
+
+log:
+  - domain: C++ / 数据结构
+    count: 22
+  - domain: CSAPP / 系统
+    count: 4
+  - domain: CUDA / GPU
+    count: 2
+  - domain: 离散数学
+    count: 2
+  - domain: 英语
+    count: 1
+
+ports:
+  - label: GITHUB
+    url: https://github.com/luobochuanqi
+    icon: fab fa-github
+    note: 全部公开仓库
+  - label: EMAIL
+    url: mailto:luobochuanqi@qq.com
+    icon: fas fa-envelope
+    note: 已授权暴露
+  - label: RSS
+    url: /feed.xml
+    icon: fas fa-rss
+    note: 订阅更新

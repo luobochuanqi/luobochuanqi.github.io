@@ -1,7 +1,5 @@
 ---
-# the default layout is 'page'
-icon: fas fa-info-circle
+layout: dossier
+icon: fas fa-folder-open
 order: 4
 ---
-
-👋

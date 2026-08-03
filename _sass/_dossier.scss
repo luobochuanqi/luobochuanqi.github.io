@@ -1,0 +1,440 @@
+/* DOSSIER panel: functional spec-sheet brutalism. */
+
+.dossier {
+  max-width: 960px;
+  padding: 1rem 0 3rem;
+  font-family: 'Chakra Petch', 'Microsoft YaHei', sans-serif;
+
+  /* section titles */
+  .ds-sec-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    color: var(--skin-accent);
+    margin: 3.2rem 0 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+
+    &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--skin-line);
+    }
+  }
+
+  /* ---- 01 identity ---- */
+  .ds-identity {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2.5rem;
+    align-items: start;
+    padding-top: 1.5rem;
+  }
+
+  .ds-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    color: var(--skin-muted);
+    margin-bottom: 0.8rem;
+  }
+
+  .ds-handle {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    color: var(--skin-heading);
+    margin: 0;
+    min-height: 1.05em;
+  }
+
+  .ds-tagline {
+    margin-top: 0.8rem;
+    color: var(--skin-text);
+    font-size: 1.05rem;
+  }
+
+  .ds-status {
+    list-style: none;
+    display: flex;
+    gap: 1.6rem;
+    padding: 0;
+    margin: 1.4rem 0 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--skin-muted);
+
+    b {
+      color: var(--skin-accent);
+      font-weight: 500;
+      margin-left: 0.4rem;
+    }
+  }
+
+  .ds-specimen {
+    position: relative;
+    margin: 0;
+    width: 200px;
+
+    img {
+      width: 100%;
+      display: block;
+      border: 1px solid var(--skin-line);
+      filter: saturate(0.8) contrast(1.08);
+    }
+
+    .ds-corner {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-color: var(--skin-accent);
+      border-style: solid;
+      border-width: 0;
+
+      &.c-tl { top: -5px; left: -5px; border-top-width: 2px; border-left-width: 2px; }
+      &.c-tr { top: -5px; right: -5px; border-top-width: 2px; border-right-width: 2px; }
+      &.c-bl { bottom: -5px; left: -5px; border-bottom-width: 2px; border-left-width: 2px; }
+      &.c-br { bottom: -5px; right: -5px; border-bottom-width: 2px; border-right-width: 2px; }
+    }
+
+    figcaption {
+      margin-top: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      line-height: 1.6;
+      letter-spacing: 0.06em;
+      color: var(--skin-muted);
+
+      i {
+        color: var(--skin-accent);
+        font-style: normal;
+      }
+    }
+  }
+
+  /* ---- 02 spec sheet ---- */
+  .ds-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin: 0;
+    border: 1px solid var(--skin-line);
+
+    .ds-field {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 1rem;
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid var(--skin-line);
+      margin: 0;
+
+      &:nth-child(odd) {
+        border-right: 1px solid var(--skin-line);
+      }
+
+      &:nth-last-child(-n + 2) {
+        border-bottom: none;
+      }
+
+      dt {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.16em;
+        color: var(--skin-muted);
+        align-self: center;
+      }
+
+      dd {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--skin-text);
+      }
+
+      .ds-redacted {
+        color: var(--skin-heading);
+        letter-spacing: -0.06em;
+        user-select: none;
+      }
+    }
+  }
+
+  .ds-skills {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin-top: 1.4rem;
+
+    h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--skin-muted);
+      margin-bottom: 0.7rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    li {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid var(--skin-line);
+      color: var(--skin-text);
+      transition: border-color 0.15s ease, color 0.15s ease;
+
+      &:hover {
+        border-color: var(--skin-accent);
+        color: var(--skin-accent);
+      }
+    }
+  }
+
+  /* ---- 03 works bento ---- */
+  .ds-bento {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .ds-work {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 1.1rem 1.2rem;
+    background: var(--skin-surface);
+    border: 1px solid var(--skin-line);
+    color: var(--skin-text);
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+      transform: translate(-2px, -2px);
+      border-color: var(--skin-accent);
+      box-shadow: 4px 4px 0 var(--skin-accent-dim);
+      color: var(--skin-text);
+    }
+
+    &.ds-wide {
+      grid-column: span 2;
+    }
+
+    .ds-work-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+    }
+
+    .ds-work-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--skin-heading);
+      word-break: break-all;
+    }
+
+    .ds-work-stars {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--skin-accent);
+      white-space: nowrap;
+    }
+
+    .ds-work-desc {
+      margin: 0;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: var(--skin-muted);
+      flex-grow: 1;
+    }
+
+    .ds-work-lang {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      color: var(--skin-muted);
+      border-top: 1px solid var(--skin-line);
+      padding-top: 0.5rem;
+    }
+  }
+
+  /* ---- 04 output log ---- */
+  .ds-terminal {
+    border: 1px solid var(--skin-line);
+    background: var(--skin-code-bg);
+    padding: 1.2rem 1.4rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .ds-term-line {
+    font-size: 0.78rem;
+    margin: 0;
+    color: var(--skin-text);
+
+    &.cmd {
+      color: var(--skin-accent);
+      margin-bottom: 1rem;
+    }
+
+    &.dim {
+      color: var(--skin-muted);
+      margin-top: 1rem;
+    }
+  }
+
+  .ds-log-row {
+    display: grid;
+    grid-template-columns: 150px 1fr 32px;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.45rem 0;
+
+    .ds-log-domain {
+      font-size: 0.78rem;
+      color: var(--skin-text);
+    }
+
+    .ds-log-bar {
+      display: block;
+      height: 8px;
+      width: calc(var(--n) * 4.2%);
+      background: var(--skin-accent);
+      transition: width 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .ds-log-count {
+      font-size: 0.78rem;
+      color: var(--skin-accent);
+      text-align: right;
+    }
+  }
+
+  /* ---- 05 ports ---- */
+  .ds-port-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .ds-port {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.2rem;
+    border: 1px solid var(--skin-line);
+    background: var(--skin-surface);
+    color: var(--skin-text);
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+      transform: translate(-2px, -2px);
+      border-color: var(--skin-accent);
+      box-shadow: 4px 4px 0 var(--skin-accent-dim);
+      color: var(--skin-text);
+    }
+
+    i {
+      font-size: 1.3rem;
+      color: var(--skin-accent);
+    }
+
+    .ds-port-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: var(--skin-heading);
+    }
+
+    .ds-port-note {
+      font-size: 0.75rem;
+      color: var(--skin-muted);
+    }
+  }
+
+  /* ---- reveal motion ---- */
+  .ds-reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+
+    &.is-in {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ds-reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .ds-log-bar {
+      transition: none;
+    }
+  }
+
+  /* ---- mobile collapse ---- */
+  @media (max-width: 767px) {
+    .ds-identity {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .ds-specimen {
+      width: 160px;
+    }
+
+    .ds-fields {
+      grid-template-columns: 1fr;
+
+      .ds-field {
+        &:nth-child(odd) {
+          border-right: none;
+        }
+
+        &:nth-last-child(-n + 2) {
+          border-bottom: 1px solid var(--skin-line);
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+
+    .ds-skills {
+      grid-template-columns: 1fr;
+    }
+
+    .ds-bento {
+      grid-template-columns: 1fr;
+
+      .ds-wide {
+        grid-column: span 1;
+      }
+    }
+
+    .ds-log-row {
+      grid-template-columns: 110px 1fr 28px;
+    }
+
+    .ds-port-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

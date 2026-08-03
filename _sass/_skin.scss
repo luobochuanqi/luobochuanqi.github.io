@@ -1,0 +1,414 @@
+/* luobo skin: functional spec-sheet brutalism over Chirpy.
+   Radius 0 everywhere, one accent per mode, exposed grid. */
+
+/* ---- tokens ---- */
+
+@mixin skin-dark {
+  --skin-bg: #0b0f14;
+  --skin-surface: #0e141b;
+  --skin-line: #1c242e;
+  --skin-text: #b6c2cc;
+  --skin-muted: #64707c;
+  --skin-heading: #e8eef2;
+  --skin-accent: #5ce0b8;
+  --skin-accent-dim: rgba(92, 224, 184, 0.4);
+  --skin-accent-ghost: rgba(92, 224, 184, 0.08);
+  --skin-grid: rgba(232, 238, 242, 0.035);
+  --skin-code-bg: #0a0e13;
+
+  /* remap chirpy vars */
+  --main-bg: var(--skin-bg);
+  --main-border-color: var(--skin-line);
+  --text-color: var(--skin-text);
+  --text-muted-color: var(--skin-muted);
+  --heading-color: var(--skin-heading);
+  --label-color: var(--skin-muted);
+  --link-color: var(--skin-accent);
+  --link-underline-color: var(--skin-accent-dim);
+  --blockquote-border-color: var(--skin-accent);
+  --blockquote-text-color: var(--skin-muted);
+  --button-bg: var(--skin-surface);
+  --btn-border-color: var(--skin-line);
+  --card-bg: var(--skin-surface);
+  --card-hover-bg: var(--skin-line);
+  --card-shadow: none;
+  --sidebar-bg: var(--skin-bg);
+  --sidebar-border-color: var(--skin-line);
+  --sidebar-muted-color: var(--skin-muted);
+  --sidebar-active-color: var(--skin-accent);
+  --sidebar-hover-bg: var(--skin-accent-ghost);
+  --site-title-color: var(--skin-heading);
+  --site-subtitle-color: var(--skin-muted);
+  --avatar-border-color: var(--skin-line);
+  --topbar-bg: rgba(11, 15, 20, 0.82);
+  --topbar-text-color: var(--skin-text);
+  --search-border-color: var(--skin-line);
+  --search-icon-color: var(--skin-muted);
+  --menu-bg: var(--skin-surface);
+  --menu-border-color: var(--skin-line);
+  --menu-highlight-bg: var(--skin-accent-ghost);
+  --highlight-bg-color: var(--skin-code-bg);
+  --highlighter-rouge-color: #c9def1;
+  --highlight-lineno-color: #4d5a66;
+  --inline-code-bg: var(--skin-accent-ghost);
+  --code-color: var(--skin-text);
+  --code-header-text-color: var(--skin-muted);
+  --code-header-muted-color: var(--skin-line);
+  --language-border-color: var(--skin-line);
+  --tb-odd-bg: var(--skin-surface);
+  --tb-even-bg: var(--skin-bg);
+  --tb-border-color: var(--skin-line);
+  --tag-border: var(--skin-line);
+  --tag-shadow: none;
+  --dash-color: var(--skin-line);
+  --timeline-color: var(--skin-line);
+  --timeline-node-bg: var(--skin-muted);
+  --btn-backtotop-color: var(--skin-accent);
+  --btn-backtotop-border-color: var(--skin-line);
+  --post-list-text-color: var(--skin-text);
+  --btn-patinator-text-color: var(--skin-text);
+  --btn-paginator-hover-color: var(--skin-accent-ghost);
+  --toc-highlight: var(--skin-accent);
+  --prompt-tip-bg: rgba(92, 224, 184, 0.1);
+  --prompt-tip-icon-color: var(--skin-accent);
+}
+
+@mixin skin-light {
+  --skin-bg: #f2f3f1;
+  --skin-surface: #fafbfa;
+  --skin-line: #d5dad4;
+  --skin-text: #2a3138;
+  --skin-muted: #6b747d;
+  --skin-heading: #12181e;
+  --skin-accent: #0a7a5c;
+  --skin-accent-dim: rgba(10, 122, 92, 0.45);
+  --skin-accent-ghost: rgba(10, 122, 92, 0.07);
+  --skin-grid: rgba(18, 24, 30, 0.05);
+  --skin-code-bg: #e9ece9;
+
+  --main-bg: var(--skin-bg);
+  --main-border-color: var(--skin-line);
+  --text-color: var(--skin-text);
+  --text-muted-color: var(--skin-muted);
+  --heading-color: var(--skin-heading);
+  --label-color: var(--skin-muted);
+  --link-color: var(--skin-accent);
+  --link-underline-color: var(--skin-accent-dim);
+  --blockquote-border-color: var(--skin-accent);
+  --blockquote-text-color: var(--skin-muted);
+  --button-bg: var(--skin-surface);
+  --btn-border-color: var(--skin-line);
+  --card-bg: var(--skin-surface);
+  --card-hover-bg: var(--skin-line);
+  --card-shadow: none;
+  --sidebar-bg: var(--skin-bg);
+  --sidebar-border-color: var(--skin-line);
+  --sidebar-muted-color: var(--skin-muted);
+  --sidebar-active-color: var(--skin-accent);
+  --sidebar-hover-bg: var(--skin-accent-ghost);
+  --site-title-color: var(--skin-heading);
+  --site-subtitle-color: var(--skin-muted);
+  --avatar-border-color: var(--skin-line);
+  --topbar-bg: rgba(242, 243, 241, 0.85);
+  --topbar-text-color: var(--skin-text);
+  --search-border-color: var(--skin-line);
+  --search-icon-color: var(--skin-muted);
+  --menu-bg: var(--skin-surface);
+  --menu-border-color: var(--skin-line);
+  --menu-highlight-bg: var(--skin-accent-ghost);
+  --highlight-bg-color: var(--skin-code-bg);
+  --highlighter-rouge-color: #3f596f;
+  --highlight-lineno-color: #9aa49c;
+  --inline-code-bg: var(--skin-accent-ghost);
+  --code-color: var(--skin-text);
+  --code-header-text-color: var(--skin-muted);
+  --code-header-muted-color: var(--skin-line);
+  --language-border-color: var(--skin-line);
+  --tb-odd-bg: var(--skin-surface);
+  --tb-even-bg: var(--skin-bg);
+  --tb-border-color: var(--skin-line);
+  --tag-border: var(--skin-line);
+  --tag-shadow: none;
+  --dash-color: var(--skin-line);
+  --timeline-color: var(--skin-line);
+  --timeline-node-bg: var(--skin-muted);
+  --btn-backtotop-color: var(--skin-accent);
+  --btn-backtotop-border-color: var(--skin-line);
+  --post-list-text-color: var(--skin-text);
+  --btn-patinator-text-color: var(--skin-text);
+  --btn-paginator-hover-color: var(--skin-accent-ghost);
+  --toc-highlight: var(--skin-accent);
+  --prompt-tip-bg: rgba(10, 122, 92, 0.08);
+  --prompt-tip-icon-color: var(--skin-accent);
+}
+
+:root[data-bs-theme='dark'] {
+  @include skin-dark;
+}
+
+:root[data-bs-theme='light'] {
+  @include skin-light;
+}
+
+:root:not([data-bs-theme]) {
+  @media (prefers-color-scheme: dark) {
+    @include skin-dark;
+  }
+  @media (prefers-color-scheme: light) {
+    @include skin-light;
+  }
+}
+
+/* ---- global shape + texture ---- */
+
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}
+
+::selection {
+  background: var(--skin-accent);
+  color: var(--skin-bg);
+}
+
+body {
+  background: var(--skin-bg);
+}
+
+#main-wrapper {
+  background-image:
+    linear-gradient(var(--skin-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--skin-grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ---- type ---- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.dynamic-title,
+.site-title,
+#post-list .card-title {
+  font-family: 'Chakra Petch', 'Microsoft YaHei', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.site-title {
+  font-weight: 700;
+  font-size: 1.35rem;
+}
+
+.site-subtitle {
+  font-family: 'JetBrains Mono', 'Microsoft YaHei', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+/* ---- sidebar ---- */
+
+#sidebar {
+  border-right: 1px solid var(--skin-line);
+
+  .nav-item {
+    .nav-link {
+      span {
+        font-family: 'JetBrains Mono', 'Microsoft YaHei', monospace;
+        letter-spacing: 0.14em;
+        font-size: 0.8rem;
+      }
+    }
+
+    &.active > a {
+      border-left: 2px solid var(--skin-accent);
+      font-weight: 500;
+    }
+  }
+
+  #avatar img {
+    border: 1px solid var(--skin-line);
+    filter: saturate(0.85) contrast(1.05);
+  }
+}
+
+/* ---- topbar ---- */
+
+#topbar {
+  border-bottom: 1px solid var(--skin-line);
+}
+
+#search-input {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+
+  &:focus {
+    border-color: var(--skin-accent) !important;
+    box-shadow: none !important;
+  }
+}
+
+/* ---- home post list ---- */
+
+#post-list {
+  .card-wrapper {
+    background: var(--skin-surface);
+    border: 1px solid var(--skin-line);
+    box-shadow: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+      transform: translate(-2px, -2px);
+      border-color: var(--skin-accent);
+      box-shadow: 4px 4px 0 var(--skin-accent-dim);
+    }
+
+    .card-title {
+      font-weight: 600;
+    }
+
+    .post-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+    }
+  }
+}
+
+.pagination {
+  .page-item .page-link {
+    font-family: 'JetBrains Mono', monospace;
+    border: 1px solid var(--skin-line);
+    background: var(--skin-surface);
+    color: var(--skin-text);
+  }
+
+  .page-item.active .page-link {
+    background: var(--skin-accent);
+    border-color: var(--skin-accent);
+    color: var(--skin-bg);
+  }
+}
+
+/* ---- footer / misc ---- */
+
+footer {
+  font-family: 'JetBrains Mono', 'Microsoft YaHei', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+#back-to-top {
+  border: 1px solid var(--skin-line);
+  background: var(--skin-surface);
+}
+
+/* ---- reading page typography ---- */
+
+article {
+  .content {
+    max-width: 70ch;
+    font-size: 1rem;
+    line-height: 1.9;
+
+    p {
+      margin-bottom: 1.2em;
+    }
+
+    h2,
+    h3,
+    h4 {
+      border-left: 3px solid var(--skin-accent);
+      padding-left: 0.6rem;
+    }
+
+    blockquote {
+      border-left: 3px solid var(--skin-accent);
+      background: var(--skin-accent-ghost);
+      padding: 0.4rem 1rem;
+
+      p {
+        margin-bottom: 0.4em;
+      }
+    }
+
+    table {
+      border: 1px solid var(--skin-line);
+
+      thead {
+        background: var(--skin-accent-ghost);
+
+        th {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.8rem;
+          letter-spacing: 0.06em;
+          border-bottom: 1px solid var(--skin-line);
+        }
+      }
+
+      td {
+        border-color: var(--skin-line);
+      }
+    }
+
+    code.highlighter-rouge {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--skin-accent);
+      border: 1px solid var(--skin-line);
+    }
+
+    .highlight {
+      border: 1px solid var(--skin-line);
+
+      code,
+      td.rouge-code {
+        font-family: 'JetBrains Mono', monospace;
+      }
+    }
+
+    img {
+      border: 1px solid var(--skin-line);
+    }
+  }
+
+  header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .post-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+  }
+
+  .post-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    border: 1px solid var(--skin-line);
+    background: transparent;
+
+    &:hover {
+      border-color: var(--skin-accent);
+      color: var(--skin-accent);
+    }
+  }
+}
+
+/* dynamic page titles (tabs) */
+.dynamic-title {
+  font-size: 2rem;
+  font-weight: 700;
+  border-bottom: 1px solid var(--skin-line);
+  padding-bottom: 0.6rem;
+  margin-bottom: 1.4rem;
+}
+
+/* archives / categories / tags chrome */
+#archives,
+#categories,
+#tags {
+  font-family: 'JetBrains Mono', 'Microsoft YaHei', monospace;
+}
