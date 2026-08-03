@@ -13,7 +13,7 @@ identity:
   specimen:
     alt: 一只比着剪刀手的牡丹鹦鹉
     genus: Agapornis roseicollis
-    note: 本站唯一真实生物
+    note:
 
 spec:
   - key: FOCUS
@@ -86,7 +86,7 @@ ports:
   - label: EMAIL
     url: mailto:luobochuanqi@qq.com
     icon: fas fa-envelope
-    note: 已授权暴露
+    note: luobochuanqi@qq.com
   - label: RSS
     url: /feed.xml
     icon: fas fa-rss
