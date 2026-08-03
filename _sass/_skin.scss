@@ -316,7 +316,6 @@ footer {
 
 article {
   .content {
-    max-width: 70ch;
     font-size: 1rem;
     line-height: 1.9;
 
@@ -378,6 +377,11 @@ article {
     img {
       border: 1px solid var(--skin-line);
     }
+  }
+
+  /* reading page only: constrain prose measure; code/tables use full column */
+  &[data-toc] .content > p {
+    max-width: 70ch;
   }
 
   header h1 {
