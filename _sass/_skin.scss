@@ -419,3 +419,115 @@ article {
 #tags {
   font-family: 'JetBrains Mono', 'Microsoft YaHei', monospace;
 }
+
+/* ---- archives timeline rebuild ----
+   The theme's float+pixel timeline was calibrated against its original font
+   metrics; the mono skin breaks it. Rebuild with absolute positioning so the
+   axis never depends on date text width. */
+#archives {
+  --tl-x: 96px;
+  --tl-w: 2px;
+
+  .year {
+    position: relative;
+    left: 0;
+    margin-left: 0;
+    display: flex;
+    align-items: center;
+
+    &::before,
+    &:first-child::before {
+      position: absolute;
+      float: none;
+      left: calc(var(--tl-x) - var(--tl-w) / 2);
+      width: var(--tl-w);
+      height: auto;
+      background-color: var(--timeline-color);
+    }
+    &:first-child::before {
+      top: 0.4rem;
+      bottom: 0;
+    }
+
+    /* year node: square, on the axis */
+    &::after {
+      position: absolute;
+      left: calc(var(--tl-x) - 5px);
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 10px;
+      border-radius: 0;
+      border: 2px solid var(--skin-accent);
+      background-color: var(--skin-bg);
+      box-shadow: none;
+      z-index: 1;
+    }
+  }
+
+  ul li {
+    position: relative;
+    padding-left: calc(var(--tl-x) + 24px);
+
+    &::before {
+      position: absolute;
+      float: none;
+      left: calc(var(--tl-x) - var(--tl-w) / 2);
+      width: var(--tl-w);
+      top: 0;
+      height: 100%;
+      background-color: var(--timeline-color);
+    }
+
+    &:last-child::before {
+      height: 50%;
+    }
+
+    /* theme hardcodes a white zebra stripe; retint for both modes */
+    &:nth-child(odd) {
+      background-color: var(--skin-surface);
+      background-image: none;
+    }
+
+    .date {
+      position: absolute;
+      top: 0;
+      right: auto;
+
+      &.day {
+        left: 0;
+        width: 2.2ch;
+        text-align: right;
+      }
+
+      &.month {
+        left: 2.8ch;
+        width: auto;
+      }
+    }
+
+    a {
+      margin-left: 0;
+      top: 0;
+
+      /* post node: square dot on the axis */
+      &::before {
+        position: absolute;
+        float: none;
+        left: -28px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        border-radius: 0;
+        background-color: var(--skin-accent);
+        box-shadow: none;
+        z-index: 1;
+      }
+    }
+  }
+
+  ul:last-child li:last-child::before {
+    height: 50%;
+  }
+}
