@@ -197,6 +197,13 @@ h5,
   letter-spacing: -0.01em;
 }
 
+/* bootstrap rounded utilities are !important too; match specificity, win by order */
+.rounded-circle,
+.rounded-3,
+#avatar {
+  border-radius: 0 !important;
+}
+
 .site-title {
   font-weight: 700;
   font-size: 1.35rem;
