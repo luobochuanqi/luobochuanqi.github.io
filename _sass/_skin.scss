@@ -379,10 +379,9 @@ article {
     }
   }
 
-  /* reading page only: constrain prose measure; code/tables use full column */
-  &[data-toc] .content > p {
-    max-width: 70ch;
-  }
+  /* reading measure: the main column itself (~46 CJK chars at common
+     viewports) is the measure; no extra cap, so text, code and images
+     share one right edge and no dead strip remains */
 
   header h1 {
     font-size: 2rem;
