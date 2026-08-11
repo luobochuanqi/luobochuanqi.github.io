@@ -1,9 +1,10 @@
 ---
 title: LifeOS 项目研究
-date: 2026-08-12 12:00 +0800
+date: 2026-08-12 02:00 +0800
 categories: [Blogs, Research]
 tags: [lifeos, ai-harness, intent-engineering, ideal-state, personal-ai]
 ---
+
 # LifeOS 项目研究
 
 > 研究日期：2026-08-11　|　研究对象：<https://github.com/danielmiessler/LifeOS>
@@ -59,21 +60,21 @@ LifeOS 以**一个自包含 skill** 形式分发（`LifeOS/` 目录即整个发�
 
 各核心子系统的官方定位（`ARCHITECTURE_SUMMARY.md` 的 Pipeline Router 表 + 各子系统文档）：
 
-| 子系统 | 定位 | 文档 |
-|---|---|---|
-| **The Algorithm** | 结果驱动的 ISA 执行——说清 done、爬山、凭工具证据关闭声称 | `DOCUMENTATION/Algorithm/AlgorithmSystem.md` |
-| **ISA 系统** | 中心原语，把"done"写成可证伪声明；ISA skill 提供 6 个工作流 | `DOCUMENTATION/ISA/ISASystem.md` |
-| **Cortex（记忆）** | 记忆系统，热层捕获/分层整理/检索 | `DOCUMENTATION/Memory/MemorySystem.md` |
-| **Hooks** | 确定性强制与上下文注入（Claude Code 事件上） | `DOCUMENTATION/Hooks/HookSystem.md` |
-| **Pulse** | Life Dashboard 服务器（:31337）——语音、看板、wiki、iMessage/Siri | `DOCUMENTATION/Pulse/PulseSystem.md` |
-| **Bunker** | 通用应用 harness——每个应用共享安全/在线时长/测试/部署底座 | `DOCUMENTATION/LifeosSystemArchitecture.md` |
-| **Atlas** | 基于图的资产图（SQLite）——"你所拥有一切的当前状态"；`atlas` CLI | `DOCUMENTATION/Atlas/AtlasSystem.md` |
-| **Ledger** | 变更追踪权威——版本化 Major.Feature.Patch、更新注册、完整性门 | `DOCUMENTATION/Ledger/LedgerSystem.md` |
-| **Arbol** | 云端执行层（Cloudflare Workers）——Action/Pipeline/Flow 三原语；"你睡觉时运行的 LifeOS" | `DOCUMENTATION/Arbol/ArbolSystem.md` |
-| **Synapse** | 输入路由——捕获一切并分级/路由/永久保存 | 官网 `/philosophy/synapse` |
-| **Conduit / Feed** | 内部/外部"感官" | `DOCUMENTATION/Conduit`、`Feed` |
-| **Hermes Sidecar** | 可选第二入口——以 agent 身份在终端对话，同一宪法/身份/skill | `DOCUMENTATION/Hermes/HermesSidecar.md` |
-| **Skill 系统** | 52 个自激活、可组合的领域能力单元 | `DOCUMENTATION/Skills/SkillSystem.md` |
+| 子系统             | 定位                                                                                   | 文档                                         |
+| ------------------ | -------------------------------------------------------------------------------------- | -------------------------------------------- |
+| **The Algorithm**  | 结果驱动的 ISA 执行——说清 done、爬山、凭工具证据关闭声称                               | `DOCUMENTATION/Algorithm/AlgorithmSystem.md` |
+| **ISA 系统**       | 中心原语，把"done"写成可证伪声明；ISA skill 提供 6 个工作流                            | `DOCUMENTATION/ISA/ISASystem.md`             |
+| **Cortex（记忆）** | 记忆系统，热层捕获/分层整理/检索                                                       | `DOCUMENTATION/Memory/MemorySystem.md`       |
+| **Hooks**          | 确定性强制与上下文注入（Claude Code 事件上）                                           | `DOCUMENTATION/Hooks/HookSystem.md`          |
+| **Pulse**          | Life Dashboard 服务器（:31337）——语音、看板、wiki、iMessage/Siri                       | `DOCUMENTATION/Pulse/PulseSystem.md`         |
+| **Bunker**         | 通用应用 harness——每个应用共享安全/在线时长/测试/部署底座                              | `DOCUMENTATION/LifeosSystemArchitecture.md`  |
+| **Atlas**          | 基于图的资产图（SQLite）——"你所拥有一切的当前状态"；`atlas` CLI                        | `DOCUMENTATION/Atlas/AtlasSystem.md`         |
+| **Ledger**         | 变更追踪权威——版本化 Major.Feature.Patch、更新注册、完整性门                           | `DOCUMENTATION/Ledger/LedgerSystem.md`       |
+| **Arbol**          | 云端执行层（Cloudflare Workers）——Action/Pipeline/Flow 三原语；"你睡觉时运行的 LifeOS" | `DOCUMENTATION/Arbol/ArbolSystem.md`         |
+| **Synapse**        | 输入路由——捕获一切并分级/路由/永久保存                                                 | 官网 `/philosophy/synapse`                   |
+| **Conduit / Feed** | 内部/外部"感官"                                                                        | `DOCUMENTATION/Conduit`、`Feed`              |
+| **Hermes Sidecar** | 可选第二入口——以 agent 身份在终端对话，同一宪法/身份/skill                             | `DOCUMENTATION/Hermes/HermesSidecar.md`      |
+| **Skill 系统**     | 52 个自激活、可组合的领域能力单元                                                      | `DOCUMENTATION/Skills/SkillSystem.md`        |
 
 **「生活目录（life directories）」**：`LifeOS/install/USER/` 个人树以文件组织人生领域——`TELOS/`、`WORK/`、`FINANCES/`、`HEALTH/`、`GEAR.md`、`PROJECTS.md`、`CONTACTS.md`、`OPINIONS.md`、`ABOUTME.md`、`BASICINFO.md`、`SECURITY/`、`SHARED/`、`CUSTOMIZATIONS/` 等（`ATLAS` 的 collectors 也读 `USER/PROJECTS.md`、`USER/GEAR.md`）。
 
@@ -131,4 +132,4 @@ curl -fsSL https://ourlifeos.ai/install.sh | bash
 
 ---
 
-*注：以上 "项目状态" 中 star/fork/issue 数字与最新版本号（v7.28.3，2026-08-01）为 2026-08-11 读取时的快照，会随时间变化。*
+_注：以上 "项目状态" 中 star/fork/issue 数字与最新版本号（v7.28.3，2026-08-01）为 2026-08-11 读取时的快照，会随时间变化。_
