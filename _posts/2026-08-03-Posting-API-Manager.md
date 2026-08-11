@@ -1,7 +1,7 @@
 ---
 title: 用 Posting 把一堆 AI 接口收进终端
 date: 2026-08-03 12:00 +0800
-categories: [Blogs, Share]
+categories: [Blogs, Research]
 tags: [posting, api, cli, terminal, curl, tui]
 ---
 

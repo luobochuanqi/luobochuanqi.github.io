@@ -1,7 +1,7 @@
 ---
 title: AirLLM 把 Kimi K3 压进 3.72GB 显存，8GB 笔记本还是没法用
 date: 2026-08-08 12:00 +0800
-categories: [Blogs, Share]
+categories: [Blogs, Research]
 tags: [airllm, kimi-k3, llm, local-llm, gpu]
 ---
 
