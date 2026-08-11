@@ -23,7 +23,7 @@ disable-model-invocation: true
    - frontmatter 是合法 YAML，四字段齐全。
    - `---` 之后的正文与源文件逐字节一致，diff 只显示新增的抬头块。
    - 文件名里的日期与 `date` 字段一致。
-6. **交差**。把新文件路径和四个字段值报给用户。`title`、`tags` 随时可改，改完重跑第 5 步。
+6. **交差**。把新文件路径和四个字段值报给用户。`title`、`tags` 随时可改，改完重跑第 5 步。然后 commit & push。
 
 ## 本站约定
 
