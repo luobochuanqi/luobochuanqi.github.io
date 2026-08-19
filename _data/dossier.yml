@@ -2,8 +2,8 @@
 # No runtime network requests; refresh by editing this file.
 
 identity:
-  handle: LUOBO
-  tagline: 写代码的。偶尔写点别的。
+  handle: Carota
+  tagline: How interesting the exploration is!
   redacted_fields:
     - label: REALNAME
     - label: LOCATION
@@ -11,19 +11,15 @@ identity:
   status: ACTIVE
   since: 2025.09
   specimen:
-    alt: 一只比着剪刀手的牡丹鹦鹉
-    genus: Agapornis roseicollis
+    alt: 小鹦鹉
+    genus:
     note:
 
 spec:
   - key: FOCUS
-    value: 系统 / 数据结构 / 游戏
+    value: 智能汽车 / 嵌入式 / 机器人 / 高性能仿真 / 图形引擎 / 游戏技术
   - key: STACK
-    value: C++ · Rust · Java · Vue · Python
-  - key: EDITOR
-    value: ██████
-  - key: OS
-    value: ███████
+    value: C++ · Java · TS · Python
 
 skills:
   - group: 语言
