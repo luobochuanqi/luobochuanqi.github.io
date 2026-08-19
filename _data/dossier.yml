@@ -5,9 +5,6 @@ identity:
   handle: Carota
   tagline: How interesting the exploration is!
   redacted_fields:
-    - label: REALNAME
-    - label: LOCATION
-    - label: AFFILIATION
   status: ACTIVE
   since: 2025.09
   specimen:
