@@ -6,6 +6,8 @@ tags: [cpp]
 image:
   path: /assets/img/blog/@55URI-the-beaten-path.png
   alt: example
+math: true
+mermaid: true
 ---
 
 # Markdown 渲染特性测试文档
@@ -131,7 +133,7 @@ def hello():
 
 ### 缩写（部分渲染器支持）
 
-\*[GFM]: GitHub Flavored Markdown
+*[GFM]: GitHub Flavored Markdown
 
 GFM 是 GitHub 风格的 Markdown。
 
@@ -144,31 +146,36 @@ GFM 是 GitHub 风格的 Markdown。
 ### NOTE（注意）
 
 > [!NOTE]
+>
 > 这是一个 NOTE 提示块，用于提供补充信息或注意事项。
 
 ### WARNING（警告）
 
 > [!WARNING]
+>
 > 这是一个 WARNING 警告块，提醒用户注意潜在风险。
 
 ### IMPORTANT（重要）
 
 > [!IMPORTANT]
+>
 > 这是一个 IMPORTANT 重要块，强调关键信息。
 
 ### TIP（提示）
 
 > [!TIP]
+>
 > 这是一个 TIP 提示块，提供实用的建议或技巧。
 
 ### CAUTION（谨慎）
 
 > [!CAUTION]
+>
 > 这是一个 CAUTION 谨慎块，警告可能导致数据丢失或操作失误的情况。
 
 ### 带标题的提示块（扩展语法）
-
 > [!NOTE] 自定义标题
+>
 > 内容区域可以包含**加粗**、_斜体_ 或列表：
 >
 > - 项目 1
@@ -218,16 +225,20 @@ H~2~O，X^2^
 > 这是普通引用。
 >
 > > [!WARNING]
+> >
 > > 嵌套的警告块。
 
 列表中的提示：
 
 - 列表项一
   > [!NOTE]
+  >
   > 列表内的提示。
 - 列表项二
 
+
 表格内包含代码或强调：
+
 | 特性 | 示例 |
 |------|------|
 | 粗体 | **示例** |
