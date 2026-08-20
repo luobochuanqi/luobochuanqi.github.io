@@ -3,6 +3,7 @@ title: 最小向量点积
 date: 2026-03-31 08:00 +0800
 categories: [Blogs, Algorithm]
 tags: [cpp, greedy]
+math: true
 ---
 
 # 1049. 最小向量点积
