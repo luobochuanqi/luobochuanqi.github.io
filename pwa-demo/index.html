@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Hello PWA</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <style>
+    body { margin: 0; font-family: system-ui, sans-serif; min-height: 100dvh;
+           display: flex; align-items: center; justify-content: center;
+           background: #fafafa; }
+    main { text-align: center; padding: 24px; }
+    button { font-size: 1.4rem; padding: 14px 32px; border: none; border-radius: 12px;
+             background: #4caf50; color: #fff; cursor: pointer; }
+    #msg { margin-top: 24px; font-size: 1.6rem; color: #222; }
+  </style>
+</head>
+<body>
+  <main>
+    <button id="btn">点我</button>
+    <p id="msg"></p>
+  </main>
+  <script>
+    document.getElementById('btn').onclick = () => {
+      document.getElementById('msg').textContent = 'Hello World!';
+    };
+    // PWA 安装支持
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(e => console.error(e));
+    }
+  </script>
+</body>
+</html>
