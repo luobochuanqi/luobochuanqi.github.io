@@ -29,13 +29,13 @@ tags: [super-resolution, dlss, fsr, xess, diffusion, game-upscaling]
 - **回归型模型**：目标是「尽量贴近原图」，PSNR、SSIM分数高，输出稳定，但细节偏柔和，代表是CNN、Transformer、LUT查表类。
 - **生成型模型**：目标是「人眼看着真实」，会脑补纹理细节，画面锐利，但容易生成错误内容（幻觉），代表是GAN、扩散模型。
 
-![综述](image/SR-research/1789730587816.png)
+![综述](assets/img/SR-research/1789730587816.png)
 
 ---
 
 ## 二、学术圈：ResShift扩散超分 & ShiftLUT查表超分
 
-![ResShift](image/SR-research/1789730712745.png)
+![ResShift](assets/img/SR-research/1789730712745.png)
 
 ### 2.1 ResShift：把扩散模型从「上千步」缩减到「15步」
 
@@ -71,7 +71,7 @@ LUT（查找表）的思路非常朴素：**离线把所有输入输出对提前
 
 #### ShiftLUT的三大创新，精准命中痛点
 
-![ShiftLUT](image/SR-research/1789730641497.png)
+![ShiftLUT](assets/img/SR-research/1789730641497.png)
 
 1. **LSS 可学习空间移位模块：零成本扩大感受野**
    每个特征通道，各自往上下左右挪一点点位置——有的通道左移1像素，有的右移，有的不动。
